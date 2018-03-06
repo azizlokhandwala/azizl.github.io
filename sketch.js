@@ -9,13 +9,13 @@ var A;
 var S;
 function setup() {
   createCanvas(1600,1400);
-     background(255);
     frameRate(10);
     x = width / 2;
     y = height / 2;
 }
 
 function draw() {
+   background(255);
   R = random(0, 255);
     G = random(0, mouseX/2.5);
      B = random(0, mouseY/1.8);
