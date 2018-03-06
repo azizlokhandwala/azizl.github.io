@@ -1,4 +1,3 @@
-var img;
 var smallPoint, largePoint;
 var colors = [];
 var index = 0;
@@ -12,7 +11,6 @@ function setup() {
   colors.push(color(237, 70, 47, 1));
   smallPoint = 20;
   largePoint = 60;
-  imageMode(CENTER);
   noStroke();
   clear();
   angleMode(RADIANS);
@@ -27,10 +25,8 @@ function draw() {
 
     v.mult(random(1, 20*wave));
     var pointillize = random(smallPoint, largePoint);
-    var x = mouseX + v.x;//floor(random(img.width));
-    var y = mouseY + v.y;//floor(random(img.height));
-    //var pix = img.get(x, y);
-    //fill(pix[0],pix[1], pix[2], 52);
+    var x = mouseX + v.x;
+    var y = mouseY + v.y;
     fill(colors[index]);
     ellipse(x, y, pointillize, pointillize);
   }
