@@ -1,51 +1,43 @@
-var speed = 60;
-var diameter;
-var x;
-var y;
-var R;
-var G;
-var B;
-var A;
-var S;
+var img;
+var smallPoint, largePoint;
+var colors = [];
+var index = 0;
+var angle = 0;
+var alph = 10;
+
 function setup() {
-  createCanvas(1600,1400);
-    frameRate(10);
-    x = width / 2;
-    y = height / 2;
+  var canvas = createCanvas(windowWidth, windowHeight);
+  canvas.id('sketch-container'); 
+  colors.push(color(255, 200, 0, 6));
+  colors.push(color(237, 70, 47, 1));
+  smallPoint = 20;
+  largePoint = 60;
+  imageMode(CENTER);
+  noStroke();
+  clear();
+  angleMode(RADIANS);
 }
 
 function draw() {
-   background(255);
-  R = random(0, 255);
-    G = random(0, mouseX/2.5);
-     B = random(0, mouseY/1.8);
-  A = random(100);
-  fill(R, G, B, A);
 
-  R = random(0,255);
-  G = random(0, mouseY/1.8);
-  B = random(0, mouseX/2.5);
-  A = random(100);
-  stroke(R, G, B, A);
+  for (var i = 0; i < 15; i++) {
+    var v = p5.Vector.random2D();
 
-  S = random(height/6);
-  strokeWeight(S);
+    var wave = map(sin(angle), -1, 1, 0, 4);
 
-  diameter = random(height/3);
-
-  x += random(-speed, speed);
-  y += random(-speed, speed);
-
-  if (x>width) { 
-    x = 0;
-  } else if (x < 0) { 
-    x = width;
+    v.mult(random(1, 20*wave));
+    var pointillize = random(smallPoint, largePoint);
+    var x = mouseX + v.x;//floor(random(img.width));
+    var y = mouseY + v.y;//floor(random(img.height));
+    //var pix = img.get(x, y);
+    //fill(pix[0],pix[1], pix[2], 52);
+    fill(colors[index]);
+    ellipse(x, y, pointillize, pointillize);
   }
-  if (y>height) { 
-    y = 0;
-  } else if (y < 0) { 
-    y = height;
+
+  if (random(1) < 0.01) {
+    index = (index + 1) % colors.length;
   }
-  ellipse(x, y, diameter, diameter);
-   
+
+  angle += 0.02;
 }
