@@ -1,10 +1,11 @@
  function setup() {
   createCanvas(windowWidth , windowHeight );
+  )
     var C = document.getElementById("C");
    var ctx = C.getContext("2d");
 
-   var num = 800; //you can change the number of stars here
-   var added_mass = 0; //number of stars eaten :D
+   var num = 800; 
+   var added_mass = 0;
    var holeRadius = 2;
    var radiusLimit = (C.width + C.height) / 20;
    var hole_volume = 0;
