@@ -1,15 +1,6 @@
-window.onload = function() {
-
-   window.requestAnimFrame = (function() {
-      return window.requestAnimationFrame ||
-         window.webkitRequestAnimationFrame ||
-         window.mozRequestAnimationFrame ||
-         function(callback) {
-            window.setTimeout(callback, 1000 / 60);
-         };
-   })();
-
-   var C = document.getElementById("C");
+ function setup() {
+  createCanvas(windowWidth , windowHeight );
+    var C = document.getElementById("C");
    var ctx = C.getContext("2d");
 
    var num = 800; //you can change the number of stars here
@@ -31,6 +22,12 @@ window.onload = function() {
       this.angularSpeed = angularSpeed;
       this.randomSpeed0 = randomSpeed0;
       this.acceleration = acceleration;
+  
+  function draw() {
+  background(12, 17, 14);
+}
+
+  
    };
 
    function makeStar(new_star) {
